@@ -76,44 +76,8 @@ co <= carryLine(31)
 END plus_minus;
 
 
-Library ieee;
-Use ieee.std_logic_1164.all;
 entity test_bench is
 end entity;
-
-architecture hopeAndPray of test_bench is
-
-COMPONENT adder_subtracter is 
-	port( datain_a: in std_logic_vector(31 downto 0);
-	datain_b: in std_logic_vector(31 downto 0);
-	add_sub: in std_logic;
-	dataout_as: out std_logic_vector(31 downto o);
-	co: out std_logic);
-END COMPONENT adder_subtracter;
-
-SIGNAL TST_A,TST_B,TST_C: std_logic_vector(31 downto 0);
-SIGNAL TST_CO,TST_add_sub: std_logic;
-
-BEGIN
-	test: adder_subtracter PORT MAP(
-		datain_a=>TST_A,
-		datain_b=>TST_B,
-		dataout_as=>TST_C,
-		co=>TST_CO,
-		add_sub=>TST_add_sub);
-
-	tb: process
-	Begin
-		wait for 100 ns;
-		TST_A <="00000000";
-		TST_B <="00000000";
-		TST_C <="000000000";
-		TST_CO <='Z';
-		TST_add_sub <= '0';
-		wait for 5 ns;
-		
-
-
 
 
 entity shift_register is 
@@ -123,7 +87,7 @@ port( datain: in std_logic_vector(31 downto 0);
 	dataout_shreg: out std_logic_vector(31 downto 0));
 end entity shift_register;
 
-entity ALU is  
+entity ALU is 
 	Port(DataIn1,DataIn2: in std_logic_vector(31 downto 0);
 	Control: in std_logic_vector(4 downto 0);
 	Shift_dir: in std_logic;

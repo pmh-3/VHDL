@@ -1,0 +1,66 @@
+Library ieee;
+Use ieee.std_logic_1164.all;
+Use ieee.numeric_std.all;
+Use ieee.std_logic_arith.all;
+Use ieee.std_logic_unsigned.all;
+
+
+
+entity adder IS PORT(
+	a: IN std_logic
+	b: IN std_logic
+	ci: IN std_logic
+	c: OUT std_logic
+	co: OUT std_logic
+	);
+end entitiy adder;
+
+Architecture structure OF adder IS
+BEGIN
+
+
+
+
+
+
+
+entity adder_subtracter is 
+port( datain_a: in std_logic_vector(31 downto 0);
+	datain_b: in std_logic_vector(31 downto 0);
+	add_sub: in std_logic;
+	dataout_as: out std_logic_vector(31 downto o);
+	co: out std_logic);
+end entity adder_subtracter;
+
+entity shift_register is 
+port( datain: in std_logic_vector(31 downto 0);
+	dir: in std_logic;
+	shamt: in std_logic_vector(5 downto o);
+	dataout_shreg: out std_logic_vector(31 downto 0));
+end entity shift_register;
+
+entity ALU is 
+	Port(DataIn1,DataIn2: in std_logic_vector(31 downto 0);
+	Control: in std_logic_vector(4 downto 0);
+	Shift_dir: in std_logic;
+	Shift_amount: in std_logic_vector(5 downto 0);
+	Negative, Zero, Overflow, Carry: out std_logic;
+	ALUResult: out std_logic_vector(31 downto 0) );
+end entity ALU;
+
+Architecture num of ALU is 
+	component adder_subtracter
+		port( datain_a: in std_logic_vector(31 downto 0);
+			datain_b: in std_logic_vector(31 downto 0);
+			add_sub: in std_logic;
+			dataout_as: out std_logic_vector(31 downto o);
+			co: out std_logic);
+	end component;
+	
+	component shift_register 
+		port( datain: in std_logic_vector(31 downto 0);
+			dir: in std_logic;
+			shamt: in std_logic_vector(5 downto o);
+			dataout_shreg: out std_logic_vector(31 downto 0));
+	end component;
+
